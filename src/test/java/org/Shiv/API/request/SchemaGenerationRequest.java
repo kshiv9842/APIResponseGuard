@@ -29,66 +29,7 @@ public class SchemaGenerationRequest {
     public HttpResponse getSchemaGenerationRequest(String prompt)
         throws IOException, URISyntaxException, InterruptedException {
 
-        //Gson gson = new GsonBuilder ().disableHtmlEscaping().create();
-        //JsonObject promptJson = gson.fromJson (prompt, JsonObject.class);
-
         // Set the base URI and base path from your configuration
-        /*RestAssured.baseURI = ConfigLoader.getApiBaseURI(); // "https://generativelanguage.googleapis.com/"
-        RestAssured.basePath = "v1beta/models/"; // Only set basePath
-
-        // Retrieve the model name
-        String model = ConfigLoader.getModel(); // e.g., "gemini-1.5-flash"
-        String action = "generateContent"; // Fixed action name
-
-        // Create the full endpoint URL without URL encoding
-        String endpoint = model + ":" + action; // Ensure the colon is not encoded
-
-        // Construct the complete URL
-        String fullUrl = "https://generativelanguage.googleapis.com/v1beta/models/"+"gemini-1.5-flash:generateContent";
-
-        System.out.println("Full URL: " + fullUrl);
-        // Create the request specification
-        RequestSpecification request = RestAssured.given();
-
-        // Set headers
-        Map<String, String> header = new HashMap<>();
-        header.put("Content-Type", "application/json");
-        request.headers(header);
-
-        // Set query parameters
-        request.queryParam("key", ConfigLoader.getApiKey()); // Adds the API key as a query parameter
-
-        // Create request body
-        Map<String, String> bodymap = new HashMap<>();
-        bodymap.put("text", "Generate schema for given json");
-
-        List<Object> parts = new ArrayList<>();
-        parts.add(bodymap);
-
-        Map<String, Object> partsMap = new HashMap<>();
-        partsMap.put("parts", parts);
-
-        List<Object> contents = new ArrayList<>();
-        contents.add(partsMap);
-
-        Map<String, Object> contentMap = new HashMap<>();
-        contentMap.put("contents", contents);
-
-        // Convert the content map to JSON
-        String requestBody = gson.toJson(contentMap);
-        request.body(requestBody);
-
-        // Print the request details
-        System.out.println("Request Body: " + requestBody);
-
-        // Construct the full URL for the request
-        System.out.println("Full URL: " + fullUrl);
-        System.out.println("Request URL before sending: " + request.log ().uri ());
-
-
-        // Send the POST request
-        Response response = request.post(fullUrl.replace ("%3A",""));
-*/
         URI uri = new URI(ConfigLoader.getApiBaseURI() + "v1beta/models/" +
             ConfigLoader.getModel() + ":generateContent?key=" +
             ConfigLoader.getApiKey());
